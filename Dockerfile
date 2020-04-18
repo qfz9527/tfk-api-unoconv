@@ -1,5 +1,4 @@
-# Setting the base to docker-node-unoconv
-FROM telemark/docker-node-unoconv:8.9.4
+FROM telemark/docker-node-unoconv:10.14.0
 
 #### Begin setup ####
 
@@ -7,7 +6,7 @@ FROM telemark/docker-node-unoconv:8.9.4
 COPY . /src
 
 # Change working directory
-WORKDIR "/src"
+WORKDIR /src
 
 # Install dependencies
 RUN npm install --production
@@ -15,6 +14,7 @@ RUN npm install --production
 # Env variables
 ENV SERVER_PORT 3000
 ENV PAYLOAD_MAX_SIZE 1048576
+ENV PAYLOAD_TIMEOUT 120000
 ENV TIMEOUT_SERVER 120000
 ENV TIMEOUT_SOCKET 140000
 
